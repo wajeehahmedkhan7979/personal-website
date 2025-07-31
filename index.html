@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wajeeh's Portfolio</title>
+  <!-- AOS (Animate on Scroll) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar glassy" style="position:fixed; left:50%; transform:translateX(-50%); z-index:1000; top:0; width:auto; background:rgba(24,24,24,0.95); border-radius:2.5rem; box-shadow:0 4px 32px #0008; padding:0.5rem 2rem;">
+    <nav>
+      <ul class="nav-links flex items-center gap-3" style="display:flex; align-items:center; gap:1.1rem; margin:0; padding:0; list-style:none;">
+        <li><a href="#hero" class="nav-btn" id="nav-hero"><i class="fas fa-home"></i><span class="nav-label">Home</span></a></li>
+        <li><a href="#testimonials" class="nav-btn" id="nav-testimonials"><i class="fas fa-comment"></i><span class="nav-label">Testimonials</span></a></li>
+        <li><a href="#about" class="nav-btn" id="nav-about"><i class="fas fa-user"></i><span class="nav-label">About</span></a></li>
+        <li><a href="#services" class="nav-btn" id="nav-services"><i class="fas fa-cogs"></i><span class="nav-label">Services</span></a></li>
+        <li><a href="#skills" class="nav-btn" id="nav-skills"><i class="fas fa-laptop-code"></i><span class="nav-label">Skills</span></a></li>
+        <li><a href="#projects" class="nav-btn" id="nav-projects"><i class="fas fa-briefcase"></i><span class="nav-label">Projects</span></a></li>
+        <li><a href="#experience" class="nav-btn" id="nav-experience"><i class="fas fa-history"></i><span class="nav-label">Experience</span></a></li>
+        <li><a href="#education" class="nav-btn" id="nav-education"><i class="fas fa-graduation-cap"></i><span class="nav-label">Education</span></a></li>
+        <li><a href="#contact" class="nav-btn" id="nav-contact"><i class="fas fa-envelope"></i><span class="nav-label">Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+  <script>
+    // Scrollspy: highlight nav based on scroll position
+    const navLinks = document.querySelectorAll('.nav-btn');
+    const sectionIds = [
+      'hero','testimonials','about','services','skills','projects','experience','education','contact'
+    ];
+    function setActiveNavByScroll() {
+      let scrollPos = window.scrollY || window.pageYOffset;
+      let found = false;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sectionIds[i]);
+        if (section && section.offsetTop - 120 <= scrollPos) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          const nav = document.getElementById('nav-' + sectionIds[i]);
+          if (nav) nav.classList.add('active');
+          found = true;
+          break;
+        }
+      }
+      if (!found) navLinks[0].classList.add('active');
+    }
+    window.addEventListener('scroll', setActiveNavByScroll);
+    window.addEventListener('DOMContentLoaded', setActiveNavByScroll);
+    // Also update on hashchange (for anchor clicks)
+    window.addEventListener('hashchange', setActiveNavByScroll);
+  </script>
+  <style>
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      color: #fff;
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      padding: 0.7em 1.1em;
+      border-radius: 2em;
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+      text-decoration: none;
+    }
+    .nav-btn.active, .nav-btn:hover {
+      background: linear-gradient(90deg, #fd6f00, #ca5900);
+      color: #fff;
+      box-shadow: 0 2px 12px #fd6f0033;
+    }
+    .nav-label {
+      display: none;
+    }
+    @media (min-width: 600px) {
+      .nav-label {
+        display: inline;
+      }
+      .nav-btn i {
+        margin-right: 0.5em;
+      }
+    }
+    @media (max-width: 600px) {
+      .navbar {
+        padding: 0.5rem 0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 98vw;
+        border-radius: 1.5rem;
+      }
+      .nav-label {
+        display: none;
+      }
+      .nav-btn {
+        font-size: 1.5rem;
+        padding: 0.7em 0.7em;
+      }
+      .nav-links {
+        gap: 0.2rem !important;
+      }
+    }
+  </style>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="container hero-content">
+      <div class="hero-text" data-aos="fade-up">
+        <h2>Hello, I'm <span>Wajeeh Ahmed</span></h2>
+        <p class="typewriter" id="typewriter"></p>
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="resume.pdf" download class="btn btn-outline"><i class="fas fa-download"></i> Resume</a>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:you@example.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="hero-img" data-aos="zoom-in-left"><img src="https://media.licdn.com/dms/image/v2/D4D35AQFjPplKguM5Bg/profile-framedphoto-shrink_200_200/profile-framedphoto-shrink_200_200/0/1698408928661?e=1752757200&v=beta&t=mCYzlmOoB3avVxogwhyMy4i9nPMFHJMnzJTe2X42bG8" alt="Avatar"/></div>
+    </div>
+    <div class="hero-bg"></div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <h2 data-aos="fade-up">Testimonials</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card" data-aos="fade-up"><p>"Wajeeh is amazing!"</p><span>- Client A</span></div>
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200"><p>"Highly creative UI/UX."</p><span>- Client B</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about" data-aos="fade-up">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        I’m <b>Wajeeh Ahmed</b>, a passionate and results-driven Full Stack Software Engineer based in Islamabad, Pakistan, with over 2 years of professional experience in building scalable web and mobile applications. I specialize in developing robust, efficient, and AI-powered digital solutions that align with modern business needs.<br><br>
+        With a strong foundation in both frontend and backend technologies, I’ve contributed to the successful delivery of multiple real-world projects across domains like cybersecurity, healthcare, SaaS, and fintech. My development philosophy revolves around clean code, agile collaboration, and continuous learning.<br><br>
+        Currently, I’m focused on building intelligent platforms and workflow automation tools, and I’m actively looking for opportunities where I can deliver value through code, clarity through communication, and confidence through experience.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2 data-aos="fade-up">Services</h2>
+      <div class="services-grid">
+        <div class="service-card" data-aos="fade-up"><h3>AI-Powered Development</h3><p>Integrating OpenAI, Gemini, and IBM Watsonx into smart, dynamic business tools and compliance platforms.</p></div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100"><h3>Custom SaaS Solutions</h3><p>Design and deployment of business applications for clients in Pakistan and the Middle East through Dev4Innovate.</p></div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200"><h3>Security & Compliance</h3><p>Audit-friendly software for cybersecurity compliance, NEPRA-aligned, and real-time systems with Firebase.</p></div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300"><h3>Consulting & Technical Leadership</h3><p>Freelance, contract, or remote full-time roles, technical consulting, interview support, SaaS MVPs, and AI automation integration.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills" id="skills">
+      <h2 class="heading">
+        <i class="fas fa-laptop-code"></i> Skills &amp; <span>Abilities</span>
+      </h2>
+
+      <div class="container" data-sr-id="22" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: 0.2s linear, opacity 1s cubic-bezier(0.5, 0, 0, 1), transform 1s cubic-bezier(0.5, 0, 0, 1);">
+        <div class="row" id="skillsContainer">
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/000000/external-react-a-javascript-library-for-building-user-interfaces-logo-color-tal-revivo.png" alt="skill">
+                <span>ReactJS</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/fluency/48/000000/node-js.png" alt="skill">
+                <span>ExpressJS</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/nodejs.png" alt="skill">
+                <span>NodeJS</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/firebase.png" alt="skill">
+                <span>Firebase</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/48px-Tailwind_CSS_Logo.png" alt="skill">
+                <span>TailwindCSS</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/bootstrap.png" alt="skill">
+                <span>Bootstrap</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/sass.png" alt="skill">
+                <span>Sass</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/html-5--v1.png" alt="skill">
+                <span>HTML5</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/css3.png" alt="skill">
+                <span>CSS3</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/javascript--v1.png" alt="skill">
+                <span>JavaScript</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo--v1.png" alt="skill">
+                <span>Java</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/kotlin.png" alt="skill">
+                <span>Kotlin</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/python--v1.png" alt="skill">
+                <span>Python</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/c-plus-plus-logo.png" alt="skill">
+                <span>C++</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/mongodb.png" alt="skill">
+                <span>MongoDB</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/mysql-logo.png" alt="skill">
+                <span>MySQL</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/postgreesql.png" alt="skill">
+                <span>PostgreSQL</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/amazon-web-services.png" alt="skill">
+                <span>AWS</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/heroku.png" alt="skill">
+                <span>Heroku</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/48/000000/external-netlify-a-cloud-computing-company-that-offers-hosting-and-serverless-backend-services-for-static-websites-logo-shadow-tal-revivo.png" alt="skill">
+                <span>Netlify</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/ios-filled/48/0080FF/digitalocean.png" alt="skill">
+                <span>DigitalOcean</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/ios-filled/48/1169ae/jquery.png" alt="skill">
+                <span>jQuery</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/glyph-neue/48/ffffff/github.png" alt="skill">
+                <span>GitHub</span>
+              </div>
+            </div>
+        <div class="bar">
+              <div class="info">
+                <img src="https://img.icons8.com/color/48/000000/wordpress.png" alt="skill">
+                <span>WordPress</span>
+              </div>
+            </div></div>
+      </div>
+    </section>
+
+  <!-- Projects -->
+  <section id="projects" class="projects">
+    <div class="container"><h2 data-aos="fade-up">Projects</h2>
+      <div class="project-grid">
+        <!-- Add more project cards with data-aos -->
+        <div class="project-card" data-aos="fade-up"><h3>Crypto Platform</h3><p>React & Node.js app.</p><span class="tech">React • Node</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Timeline -->
+  <section id="experience" class="experience" data-aos="fade-up">
+    <div class="container"><h2>Professional Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-right">
+          <span class="timeline-date">Apr 2025 – Jul 2025</span>
+          <h3>Full Stack Development Intern – Software Productivity Strategists, Inc. (Remote)</h3>
+          <p>Contributed to a highly specialized AI-based compliance platform, integrating technologies like Firebase, Next.js, IBM watsonx, and Gemini AI. Designed and deployed real-time, interactive components that reduced manual workload in audit and policy processes.</p>
+        </div>
+        <div class="timeline-item" data-aos="fade-right">
+          <span class="timeline-date">Jul 2024 – Feb 2025</span>
+          <h3>Managing Partner / Lead Developer – DEV4INNOVATE</h3>
+          <p>Led multiple projects from architecture to deployment for local and regional clients. Managed a small team, handled direct client communications, and built custom software systems using MERN stack, Firebase, and Docker.</p>
+        </div>
+        <div class="timeline-item" data-aos="fade-right">
+          <span class="timeline-date">Jul 2024 – Aug 2024</span>
+          <h3>Software Development Intern – SPS (On-site)</h3>
+          <p>Assisted in building internal automation tools and dashboards. Wrote Python scripts for compliance automation and supported frontend development with React.</p>
+        </div>
+        <div class="timeline-item" data-aos="fade-right">
+          <span class="timeline-date">Jul 2023 – Aug 2023</span>
+          <h3>Software Engineering Intern – Fauji Cement Company Ltd.</h3>
+          <p>Worked on enterprise system updates and database operations. Supported backend integration and frontend UI enhancements.</p>
+        </div>
+        <div class="timeline-item" data-aos="fade-right">
+          <span class="timeline-date">Jul 2022 – Aug 2022</span>
+          <h3>Software Development Intern – Implecso Technologies Pvt. Ltd.</h3>
+          <p>Completed foundational training in full stack development. Built utility applications and assisted senior developers on internal tasks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="education" data-aos="fade-up">
+    <div class="container"><h2>Education</h2>
+      <div class="edu-list">
+        <div class="edu-item">
+          <span class="edu-date">Oct 2021 – Jun 2025</span>
+          <h3>BS Software Engineering – Foundation University Islamabad</h3>
+          <p>Final Year Project: Full-featured cross-platform cryptocurrency exchange with admin dashboard, AI trading agent, digital wallets, and charting tools.</p>
+        </div>
+        <div class="edu-item">
+          <span class="edu-date">Sep 2023 – Jan 2024</span>
+          <h3>Erasmus Exchange Semester – Istanbul Aydin University, Turkey</h3>
+          <p>Gained international exposure and participated in cross-cultural software projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Certifications -->
+  <section id="certifications" class="education" data-aos="fade-up">
+    <div class="container"><h2>Certifications</h2>
+      <div class="edu-list">
+        <div class="edu-item">
+          <span class="edu-date">2025</span>
+          <h3>IBM Full Stack JavaScript Developer Specialization</h3>
+          <p>Coursera</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact" data-aos="fade-up">
+    <div class="container"><h2>Contact</h2>
+      <form id="contact-form">
+        <input type="text" placeholder="Name" required />
+        <input type="email" placeholder="Email" required />
+        <textarea placeholder="Message" required></textarea>
+        <button type="submit">Send</button>
+        <div id="form-message"></div>
+      </form>
+      <div class="connect-block" style="margin-top:2.5rem; text-align:center;">
+        <h3>Let’s Connect</h3>
+        <p>Email: <a href="mailto:wajeehahmed7@gmail.com">wajeehahmed7@gmail.com</a></p>
+        <p>Phone: <a href="tel:+923005291879">+92-300-5291879</a></p>
+        <p>
+          <a href="https://linkedin.com/in/wajeeh-ahmed" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> |
+          <a href="https://github.com/wajeehahmedkhan7979" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </p>
+        <p>Timezone: Pakistan Standard Time (UTC+5), excellent overlap for U.S. and European clients</p>
+        <p>Available for remote, freelance, contract, or full-time roles</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <button id="scrollTopBtn">↑</button>
+    <p>© 2025 Wajeeh Ahmed</p>
+  </footer>
+
+  <!-- AOS and Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="script.js"></script>
+  <script>AOS.init({ once: true, duration: 900, offset: 80, disable: 'mobile' });</script>
+</body>
+</html>
