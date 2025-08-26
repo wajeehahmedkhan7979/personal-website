@@ -9,9 +9,9 @@
 
 <p align="center">
   <a href="https://github.com/YOUR_USERNAME?tab=followers">
-    <img src="https://img.shields.io/github/followers/YOUR_USERNAME?label=Followers&style=social" />
+    <img src="https://img.shields.io/github/followers/wajeehahmedkhan7979?label=Followers&style=social" />
   </a>
-  <img src="https://komarev.com/ghpvc/?username=YOUR_USERNAME&label=Profile%20Views&style=flat" />
+  <img src="https://komarev.com/ghpvc/?username=wajeehahmedkhan7979&label=Profile%20Views&style=flat" />
 </p>
 
 <!-- Curved Skill Icons -->
